@@ -2,7 +2,7 @@ html{
     font-size: 62.5%
 }
 body{
-    background-color: $dark-blue;
+    background-color:#FFF8E7;
     font-family:Helvetica, Arial, sans-serif;
     font-size:$m-size;
 }
@@ -13,4 +13,11 @@ button{
 
 button:disabled{
     cursor: default;
+}
+
+.isActive{
+    font-weight: bold;
+}
+.warning{
+    color:red;
 }
