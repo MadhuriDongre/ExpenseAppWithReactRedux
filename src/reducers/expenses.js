@@ -6,7 +6,6 @@ export default (state= expenseReducerDefaultState, action)=>{
         case 'REMOVE_EXPENSE':
             return state.filter(({id})=>id!==action.id);
         case 'EDIT_EXPENSE':
-            console.log(action)
             return state.map((expense)=>{
                 if(expense.id===action.id){
                     return {...expense, ...action.updates}
