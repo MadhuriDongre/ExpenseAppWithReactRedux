@@ -3,26 +3,28 @@ import { connect } from 'react-redux';
 import { setTextFilter, sortByAmount, sortByDate,setEndDate,setStartDate} from '../actions/filters';
 import { DateRangePicker } from 'react-dates'
 
-class ExpenseListFilters extends React.Component{
+export class ExpenseListFilters extends React.Component{
     state={
         focused:null
     }
     onDatesChange=({startDate, endDate})=>{
-        this.props.dispatch(setStartDate(startDate));
-        this.props.dispatch(setEndDate(endDate));
+        this.props.setStartDate(startDate);
+        this.props.setEndDate(endDate);
     }
     onFocusChange=(focused)=>{
         this.setState(()=>({focused}))
     }   
+    onTextChange=(e)=>{
+        this.props.setTextFilter(e.target.value);
+    }
+    onSortChange=(e)=>{
+        e.target.value==="amount"?this.props.sortByAmount():this.props.sortByDate();
+    }
     render(){
         return (
             <div>
-                <input type="text" value={this.props.filters.text} onChange={(e)=>{
-                    this.props.dispatch(setTextFilter(e.target.value));
-                }}/>
-                <select value={this.props.filters.sortBy} onChange={(e)=>{
-                    e.target.value==="amount"?this.props.dispatch(sortByAmount(e.target.value)):this.props.dispatch(sortByDate(e.target.value));
-                }}>
+                <input type="text" value={this.props.filters.text} onChange={this.onTextChange}/>
+                <select value={this.props.filters.sortBy} onChange={this.onSortChange}>
                     <option value ="date">Date</option>
                     <option value ="amount">Amount</option>
                 </select>
@@ -40,24 +42,16 @@ class ExpenseListFilters extends React.Component{
         )
     }
 }
-// const ExpenseListFilters =(props)=>(
-//     <div>
-//         <input type="text" value={props.filters.text} onChange={(e)=>{
-//             props.dispatch(setTextFilter(e.target.value));
-//         }}/>
-//         <select value={props.filters.sortBy} onChange={(e)=>{
-//             e.target.value==="amount"?props.dispatch(sortByAmount(e.target.value)):props.dispatch(sortByDate(e.target.value));
-//         }}>
-//             <option value ="date">Date</option>
-//             <option value ="amount">Amount</option>
-//         </select>
 
-//     </div>
-// );
+const mapStateToProps=(state)=>({
+    filters:state.filters
+})
 
-const mapStateToProps=(state)=>{
-    return {
-        filters:state.filters
-    }
-}
-export default connect(mapStateToProps)(ExpenseListFilters);
+const mapDisptchToProps=(dispatch)=>({
+    setTextFilter:(text)=>dispatch(setTextFilter(text)),
+    setStartDate:(startDate)=>dispatch(setStartDate(startDate)),
+    setEndDate:(endDate)=>dispatch(setEndDate(endDate)),
+    sortByDate:()=>dispatch(sortByDate()),
+    sortByAmount:()=>dispatch(sortByAmount())
+})
+export default connect(mapStateToProps,mapDisptchToProps)(ExpenseListFilters);
