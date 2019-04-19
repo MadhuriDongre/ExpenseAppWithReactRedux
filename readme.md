@@ -11,5 +11,6 @@ git log - View recent commits
 yarn install - install all the dependencies defined in the package.json file.
 yarn run build:dev - build wekpack in dev mode
 yarn run build:prod - build wekpack in prod mode
+yarn serve - boot-up live-server and run the application
 yarn run dev-server - run the server and start the project at http://localhost:8080/
 yarn test - run the test suites and test cases in watch mode
