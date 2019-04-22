@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render expense list with expenses 1`] = `
+<div>
+  <p>
+    Viewing 2 expense(s) totalling 
+    <span>
+      ₹
+    </span>
+     200
+  </p>
+</div>
+`;
+
+exports[`should render expense list without expenses 1`] = `
+<div>
+  <p>
+    Viewing 0 expense(s) totalling 
+    <span>
+      ₹
+    </span>
+     0
+  </p>
+</div>
+`;
