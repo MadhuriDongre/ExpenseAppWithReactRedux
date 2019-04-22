@@ -11,9 +11,12 @@ exports[`should render expenseList item correctly 1`] = `
   </h2>
   <p>
      
-    2124
+    <span>
+      ₹
+    </span>
+    2,124
      -- 
-    -345600000
+    December 28th, 1969
   </p>
 </div>
 `;
