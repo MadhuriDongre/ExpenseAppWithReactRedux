@@ -1,4 +1,4 @@
-import {addExpense,editExpense,removeExpense,startAddExpense,setExpense, startSetExpense} from '../../actions/expenses';
+import {addExpense,editExpense,removeExpense,startAddExpense,setExpense, startSetExpense, startRemoveExpense, startEditExpense} from '../../actions/expenses';
 import thunk from 'redux-thunk';
 import configureMockStore from 'redux-mock-store';
 import expenses from '../fixtures/expenses';
@@ -22,6 +22,23 @@ test('remove Expense Action Object',()=>{
     })
 });
 
+test('should remove expense from firebase',(done)=>{
+    const store = createMockStore({});
+    const id = expenses[2].id
+    store.dispatch(startRemoveExpense({id}))
+    .then(()=>{
+        const action = store.getActions();
+        expect(action[0]).toEqual({
+            type:'REMOVE_EXPENSE',
+            id
+        });
+        return database.ref(`expenses/${id}`).once('value');
+    }).then((snapshot)=>{
+        expect(snapshot.val()).toBeFalsy;
+        done();
+    })
+});
+
 test('edit Expense Action Object',()=>{
     const action=editExpense('12',{note:'new note value'});
     expect(action).toEqual({
@@ -29,6 +46,25 @@ test('edit Expense Action Object',()=>{
         id:'12',
         updates:{note:'new note value'}
     })
+});
+
+test('should edit expense from firebase',(done)=>{
+    const store = createMockStore({});
+    const updates = {amount:100};
+    const id = expenses[0].id;
+    store.dispatch(startEditExpense(id,updates))
+    .then(()=>{
+        const action = store.getActions();
+        expect(action[0]).toEqual({
+            id,
+            type:'EDIT_EXPENSE',
+            updates
+        });
+        return database.ref(`expenses/${id}`).once('value');
+    }).then((snapshot)=>{
+        expect(snapshot.val().amount).toBe(100);
+        done();
+    });
 });
 
 test('add Expense Action Object',()=>{
@@ -89,7 +125,6 @@ test('should setup set expense action object with data',()=>{
 
 test('should fetch expenses from firebase',(done)=>{
     const store = createMockStore({});
-    // const expenseDefault = { description:'',note:'',amount:0, createdAt:0};
     store.dispatch(startSetExpense())
     .then(()=>{
         const action = store.getActions();
