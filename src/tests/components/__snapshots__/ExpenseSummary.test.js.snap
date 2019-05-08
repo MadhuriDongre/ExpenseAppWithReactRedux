@@ -1,25 +1,69 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render expense list with expenses 1`] = `
-<div>
-  <p>
-    Viewing 2 expense(s) totalling 
-    <span>
-      ₹
-    </span>
-     200
-  </p>
+<div
+  className="page-header"
+>
+  <div
+    className="content-container"
+  >
+    <h1
+      className="page-header__title"
+    >
+      Viewing 
+      <span>
+        2
+      </span>
+       expense(s) totalling 
+      <span>
+        ₹
+        200
+      </span>
+    </h1>
+    <div
+      className="page-header__action"
+    >
+      <Link
+        className="button"
+        to="/create"
+      >
+        Add Expense
+      </Link>
+    </div>
+  </div>
 </div>
 `;
 
 exports[`should render expense list without expenses 1`] = `
-<div>
-  <p>
-    Viewing 0 expense(s) totalling 
-    <span>
-      ₹
-    </span>
-     0
-  </p>
+<div
+  className="page-header"
+>
+  <div
+    className="content-container"
+  >
+    <h1
+      className="page-header__title"
+    >
+      Viewing 
+      <span>
+        0
+      </span>
+       expense(s) totalling 
+      <span>
+        ₹
+        0
+      </span>
+    </h1>
+    <div
+      className="page-header__action"
+    >
+      <Link
+        className="button"
+        to="/create"
+      >
+        Add Expense
+      </Link>
+    </div>
+  </div>
 </div>
 `;
