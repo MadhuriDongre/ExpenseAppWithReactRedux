@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ExpenseForm from './ExpenseForm';
-import { startEditExpense, startRemoveExpense} from '../actions/expenses'
+import { startEditExpense, startRemoveExpense} from '../actions/expenses';
+import { confirmAlert } from 'react-confirm-alert'; 
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 export class EditExpensePage extends React.Component{
     onSubmit=(expense)=>{
@@ -9,10 +11,22 @@ export class EditExpensePage extends React.Component{
         this.props.history.push('/');
     }
     onClick=()=>{
-        if(confirm('Are you sure you wish to delete this item?')){
-            this.props.startRemoveExpense({id:this.props.expenses.id});
-            this.props.history.push('/')
-        }
+        confirmAlert({
+            message: 'Are you sure you wish to delete this expense?',
+            buttons: [
+              {
+                label: 'Delete',
+                onClick: () => {
+                    this.props.startRemoveExpense({id:this.props.expenses.id});
+                    this.props.history.push('/')
+                }
+              },
+              {
+                label: 'Cancel',
+                onClick: () => {}
+              }
+            ]
+          });
     }
     render(){
         return (
