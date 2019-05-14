@@ -9,7 +9,9 @@ export class EditExpensePage extends React.Component{
         this.props.history.push('/');
     }
     onClick=()=>{
-        this.props.startRemoveExpense({id:this.props.expenses.id});
+        if(confirm('Are you sure you wish to delete this expense?')){
+            this.props.startRemoveExpense({id:this.props.expenses.id});
+        }
         this.props.history.push('/')
     }
     render(){
