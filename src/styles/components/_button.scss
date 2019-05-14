@@ -17,3 +17,15 @@
 .button--secondary{
     background: #888;
 }
+
+.button--login{
+    font-weight: 400;
+    background: #1c88bf;
+    border-radius: 5px;
+    margin: 0 $s-size;
+}
+.button_mini{
+    background: none;
+    font-weight: bolder;
+    border: none;
+}

@@ -1,8 +1,40 @@
-import { firebase, googleAuthProvider } from '../firebase/firebase';
+import { firebase, googleAuthProvider, facebookAuthProvider, twitterAuthProvider } from '../firebase/firebase';
 
-export const startLogin =()=>{
+export const startLoginWithGoogle =()=>{
     return ()=>{
         return firebase.auth().signInWithPopup(googleAuthProvider);
+    }
+}
+
+export const startLoginWithFacebook =()=>{
+    return ()=>{
+        return firebase.auth().signInWithPopup(facebookAuthProvider);
+    }
+}
+
+export const startLoginWithTwitter =()=>{
+    return ()=>{
+        return firebase.auth().signInWithPopup(twitterAuthProvider);
+    }
+}
+
+export const startLoginWithEmail =(email,password)=>{
+    return ()=>{
+        return firebase.auth().signInWithEmailAndPassword(email,password)
+    }
+}
+
+export const startSignupWithEmail =(email,password)=>{
+    return ()=>{
+        return firebase.auth().createUserWithEmailAndPassword(email,password)
+            .then(()=>console.log('Signup Successful!!'))
+            .catch((err)=>console.log('Signup Failed!!!', err.code))
+    }
+}
+
+export const resetPassword =(email)=>{
+    return ()=>{
+        return firebase.auth().sendPasswordResetEmail(email)
     }
 }
 

@@ -9,4 +9,14 @@
 .form__error{
     margin: 0 0 $m-size 0;
     font-style: italic;
+    color: red;
+}
+
+.form__text{
+    margin: 1rem
+}
+
+.form__message{
+    margin: 0 0 $m-size 0;
+    font-style: italic;
 }
