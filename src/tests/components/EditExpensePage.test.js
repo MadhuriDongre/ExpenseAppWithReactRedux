@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { EditExpensePage } from '../../components/EditExpensePage';
 import expenses from '../fixtures/expenses';
+import * as style from 'react-confirm-alert/src/react-confirm-alert.css';
 
 let startEditExpense,history,wrapper,startRemoveExpense;
 beforeEach(()=>{
@@ -23,7 +24,6 @@ test('should handle startEditExpense',()=>{
 
 test('should handle startRemoveExpense',()=>{
     wrapper.find('button').simulate('click')
-    expect(history.push).toHaveBeenLastCalledWith('/');
-    expect(startRemoveExpense).toHaveBeenLastCalledWith({id:expenses[0].id});
+    expect(wrapper.find(".react-confirm-alert-body")).toBeTruthy();
 });
 

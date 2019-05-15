@@ -20,6 +20,12 @@ exports[`should render expense list with expenses 1`] = `
         200
       </span>
     </h1>
+    <h3
+      className="page-header__title"
+    >
+      Total 
+       expenses
+    </h3>
     <div
       className="page-header__action"
     >
@@ -54,6 +60,12 @@ exports[`should render expense list without expenses 1`] = `
         0
       </span>
     </h1>
+    <h3
+      className="page-header__title"
+    >
+      Total 
+       expenses
+    </h3>
     <div
       className="page-header__action"
     >

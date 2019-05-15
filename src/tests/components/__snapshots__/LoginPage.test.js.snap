@@ -13,14 +13,96 @@ exports[`should render Login page correctly 1`] = `
       Expensify
     </h1>
     <p>
-      It's time to get your expenses under control!
+      It's time to get your expenses under control! 
     </p>
-    <button
-      className="button"
-      onClick={[MockFunction]}
-    >
-      Login with Google
-    </button>
+    <div>
+      <form
+        className="form"
+        onSubmit={[Function]}
+      >
+        <input
+          className="text-input text-input--login"
+          name="email"
+          onChange={[Function]}
+          placeholder="Email Address"
+          type="text"
+          value=""
+        />
+        <input
+          className="text-input text-input--login"
+          name="password"
+          onChange={[Function]}
+          placeholder="Password"
+          type="password"
+          value=""
+        />
+        <button
+          className="button button--link button--login"
+          type="submit"
+        >
+          Log In
+        </button>
+      </form>
+      <p
+        className="form__text"
+      >
+        Forgot Password? 
+        <button
+          className="button_mini"
+          onClick={[Function]}
+        >
+          Reset Password
+        </button>
+      </p>
+      <p
+        className="form__text"
+      >
+        Don't have an account? 
+        <button
+          className="button_mini"
+          onClick={[Function]}
+        >
+          Sign up
+        </button>
+      </p>
+      <p
+        className="form__text"
+      >
+        OR
+      </p>
+      <p
+        className="form__text"
+      >
+        Login With
+      </p>
+      <button
+        className="button button--link"
+        onClick={[MockFunction]}
+      >
+        <img
+          alt="Logo"
+          src="assets/icons8-google.svg"
+        />
+      </button>
+      <button
+        className="button button--link"
+        onClick={[MockFunction]}
+      >
+        <img
+          alt="Logo"
+          src="assets/icons8-facebook.svg"
+        />
+      </button>
+      <button
+        className="button button--link"
+        onClick={[MockFunction]}
+      >
+        <img
+          alt="Logo"
+          src="assets/icons8-twitter.svg"
+        />
+      </button>
+    </div>
   </div>
 </div>
 `;
