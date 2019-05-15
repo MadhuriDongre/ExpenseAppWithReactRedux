@@ -59,7 +59,7 @@ export const LoginPage = ({startLoginWithGoogle, startLoginWithFacebook, startLo
                         <form className="form" onSubmit={ loginWithEmail } >
                             {error && <p className="form__error">{error}</p>}
                             {message && <p className="form__message">{message}</p>}
-                            <input className="text-input text-input--login" type="text" name="email" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="Email Address"/>
+                            <input className="text-input text-input--login" type="text" name="email" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="Email Address" autoFocus/>
                             <input className="text-input text-input--login" type="password" name="password" value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="Password"/>
                             <button className="button button--link button--login" type="submit">Log In</button>
                         </form>
